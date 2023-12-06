@@ -1,8 +1,7 @@
-const express = require('express')
-const RolesController = require('../controllers/RolesController');
+const express = require("express");
+const RolesController = require("../controllers/RolesController");
 const rolesRout = express.Router();
 rolesRout.use(express.json());
-
 
 /**
  * @swagger
@@ -22,9 +21,9 @@ rolesRout.use(express.json());
  *      '200':
  *        description: role added successfully
  */
-rolesRout.post('/new-role',RolesController.insertRoles);
+rolesRout.post("/new-role", RolesController.insertRoles);
 
- /**
+/**
  * @swagger
  * /roles/:
  *   get:
@@ -33,8 +32,8 @@ rolesRout.post('/new-role',RolesController.insertRoles);
  *    responses:
  *      '200':
  *        description: all roleNames inserted in the table roles
- */ 
-rolesRout.get('/',RolesController.getAllRoles);
+ */
+rolesRout.get("/", RolesController.getAllRoles);
 
 /**
  * @swagger
@@ -46,10 +45,11 @@ rolesRout.get('/',RolesController.getAllRoles);
  *         name: id
  *         required: true
  *         schema:
- *           type: integer 
+ *           type: integer
  *    responses:
  *      '200':
  *        description: roleName found successfully
  */
-rolesRout.get('/:id',RolesController.getRoleById);
+rolesRout.get("/:id", RolesController.getRoleById);
+
 module.exports = rolesRout;

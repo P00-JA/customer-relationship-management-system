@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const sequelize = require('./config/crm_database');
-const roles = require('./routes/roles_rout');
+const sequelize = require("./config/crm_database");
+const roles = require("./routes/roles_rout");
 const PORT = 3478;
 
 const app = express();
@@ -31,23 +31,19 @@ const swaggerSpec = swaggerJsdoc(options);
 //swagger server
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-
 //routes
-app.use('/roles',roles);
+app.use("/roles", roles);
 
-
-  // Sync program with the database
+// Sync program with the database
 sequelize
-.sync({ force: false })
-.then(() => {
-  console.log("All models are synchronized successfully");
-})
-.catch((error) => {
-  console.log("Error occurred during model synchronization:", error);
+  .sync({ force: false })
+  .then(() => {
+    console.log("All models are synchronized successfully");
+  })
+  .catch((error) => {
+    console.log("Error occurred during model synchronization:", error);
+  });
+
+app.listen(PORT, () => {
+  console.log(`http://localhost:${PORT}`);
 });
-
-
-
-app.listen(PORT,()=>{
-    console.log(`http://localhost:${PORT}`)
-})
