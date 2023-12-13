@@ -5,26 +5,6 @@ rolesRout.use(express.json());
 
 /**
  * @swagger
- * /roles/new-role:
- *   post:
- *    summary: Adds a new role
- *    requestBody:
- *      content:
- *        application/json:
- *           schema: # Request body contents
- *             type: object
- *             properties:
- *               roleName:
- *                 type: string
- *                 example: Sales Executive
- *    responses:
- *      '200':
- *        description: role added successfully
- */
-rolesRout.post("/new-role", RolesController.insertRoles);
-
-/**
- * @swagger
  * /roles/:
  *   get:
  *    summary: view all roles
@@ -39,7 +19,7 @@ rolesRout.get("/", RolesController.getAllRoles);
  * @swagger
  * /roles/{id}:
  *   get:
- *    summary: found  a roleName by id
+ *    summary: find  a roleName by id
  *    parameters:
  *       - in: path
  *         name: id
@@ -51,5 +31,7 @@ rolesRout.get("/", RolesController.getAllRoles);
  *        description: roleName found successfully
  */
 rolesRout.get("/:id", RolesController.getRoleById);
+
+rolesRout.post("/add-role",RolesController.insertRoles);
 
 module.exports = rolesRout;
