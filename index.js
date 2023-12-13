@@ -43,7 +43,7 @@ app.use("/customer",customer)
 
 // Sync program with the database
 sequelize
-  .sync({ force: true })
+  .sync({ force: false })
   .then(() => {
     console.log("All models are synchronized successfully");
   })
